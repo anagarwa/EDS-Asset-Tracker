@@ -1,0 +1,137 @@
+body {
+  max-width: 81.15rem;
+  margin: auto;
+}
+
+.assets-container {
+  font-family: Arial, sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.asset-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.asset-row.header {
+  font-weight: bold;
+  background-color: #f2f2f2;
+}
+
+
+
+.asset-header {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.asset-header:first-child {
+  flex: 0;
+  color: #f2f2f2;
+}
+.asset-data {
+  flex: 1;
+  text-align: center;
+}
+
+.asset-data:first-child {
+  flex: 0;
+}
+
+.assets-title {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.asset-row:nth-child(even) {
+  background-color: #FCF8F5; /* Slightly darker grey for even rows */
+}
+
+.sort-icon {
+  margin-left: 5px;
+  background-image: url('icons/sorting.svg'); /* Adjust the path as necessary */
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 24px; /* Adjust based on your icon's size */
+  height: 24px; /* Adjust based on your icon's size */
+  display: inline-block;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10%;
+}
+
+.actions {
+  text-align: justify;
+  color: red;
+}
+
+.view-toggle {
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+  padding: 1rem 0;
+}
+
+.view-toggle button {
+  background: unset;
+  border: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.view-toggle button.list-view::before{
+  content: url('icons/list_icon.svg'); /* Adjust the path as necessary */
+}
+
+.view-toggle button.card-view::before{
+  content: url('icons/grid_icon.svg'); /* Adjust the path as necessary */
+}
+
+
+
+
+.card-view-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: normal;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  width: 250px;
+}
+
+.card img {
+  object-fit: cover;
+  border-radius: 15px;
+  width: 230px;
+  height: 230px;
+  padding: 10px;
+}
+
+.card p {
+  font-weight: 600;
+}
+
+.card ul {
+  color: red;
+}

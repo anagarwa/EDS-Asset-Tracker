@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assets List</title>
+    <link rel="stylesheet" href="listReport.css">
+</head>
+<body>
+<h1 class="assets-title">Assets List</h1>
+<div class="assets-container">
+    <div class="view-toggle">
+        <button class="card-view" id="toggleViewBtn">Card View
+        </button>
+    </div>
+    <div class="assets-flex-container">
+        <div class="asset-row header">
+            <div class="asset-header">Thumbnail</div>
+            <div id="sortTitle" class="asset-header">Title
+                <i class="sort-icon"></i>
+            </div>
+            <div id="sortUsage" class="asset-header">Usage
+                <i class="sort-icon"></i>
+            </div>
+            <div class="asset-header">Actions</div>
+            <div class="asset-header">Details</div>
+        </div>
+        <!-- Asset rows will be added here by assetsData.js -->
+    </div>
+    <div class="card-view-container" style="display: none;">
+        <!-- Cards will be added here by JavaScript -->
+    </div>
+</div>
+<script src="src/assetsData.js"></script>
+</body>
+</html>
