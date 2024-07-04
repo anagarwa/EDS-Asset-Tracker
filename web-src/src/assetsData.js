@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const detailLink = document.createElement('a');
     detailLink.href = '#';
     detailLink.textContent = 'View Details';
+    detailLink.href = `/assetDetails.html?thumbnail=${encodeURIComponent(asset.thumbnail)}`;
     detailLinkDiv.appendChild(detailLink);
     assetRow.appendChild(detailLinkDiv);
     assetsFlexContainer.appendChild(assetRow);
@@ -91,13 +92,14 @@ document.addEventListener('DOMContentLoaded', function() {
     mockData.forEach(asset => {
       const card = document.createElement('div');
       card.className = 'card';
+      const href = `/assetDetails.html?thumbnail=${encodeURIComponent(asset.thumbnail)}`;
       card.innerHTML = `
                 <img src="${asset.thumbnail}" alt="Thumbnail">
                 <h3>${asset.title}</h3>
                 <p>Usage: ${asset.usageCount}</p>
                 <p>Actions: </p>
                 <ul>${asset.actions.map(action => `<li>${action}</li>`).join('')}</ul>
-                <a href="#">View Details</a>
+                <a href=${href}>View Details</a>
             `;
       cardViewContainer.appendChild(card);
     });

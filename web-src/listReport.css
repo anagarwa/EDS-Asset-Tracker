@@ -1,10 +1,10 @@
 body {
-  max-width: 81.15rem;
+  max-width: 90%;
   margin: auto;
+  font-family: Arial, sans-serif;
 }
 
 .assets-container {
-  font-family: Arial, sans-serif;
   color: #333;
   display: flex;
   gap: 1rem;
@@ -23,7 +23,7 @@ body {
 }
 
 .assets-flex-container {
-  flex: 0 0 75%;
+  flex: 0 0 80%;
 }
 
 .asset-header {
@@ -108,7 +108,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  flex: 0 0 72%;
+  flex: 0 0 80%
 }
 
 .card {
