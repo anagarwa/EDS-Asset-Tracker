@@ -12,6 +12,13 @@ document.addEventListener('DOMContentLoaded', function() {
     { thumbnail: "https://delivery-p129624-e1269699.adobeaemcloud.com/adobe/assets/urn:aaid:aem:067dd57b-e64b-4b1b-aebb-5be5fde94cc2/as/collection-denims.jpeg", assetPath: "/images/asset9.png", title: "Asset 9", usageCount: 1, expirationDate: "2024-03-30" , actions: ["Expiration date reaching"]},
     { thumbnail: "https://delivery-p49105-e258067.adobeaemcloud.com/adobe/assets/urn:aaid:aem:63fa8110-5591-429b-a562-982f8d6571c2", assetPath: "/videos/asset10.mp4", title: "Asset 10", usageCount: 9, expirationDate: "2023-09-15" , actions: ["3 Warnings"]},
   ];
+  const recommendationsData = [
+    { title: "Asset 1", description: "This is a description for Asset 1." },
+    { title: "Asset 2", description: "This is a description for Asset 2." },
+    { title: "Asset 3", description: "This is a description for Asset 3." }
+  ];
+
+  const recommendationsContainer = document.getElementById('recommendations');
 
   const assetsFlexContainer = document.querySelector('.assets-flex-container');
 
@@ -95,6 +102,21 @@ document.addEventListener('DOMContentLoaded', function() {
       cardViewContainer.appendChild(card);
     });
   }
+
+  recommendationsData.forEach(recommendation => {
+    const recommendationElement = document.createElement('div');
+    recommendationElement.className = 'recommendation-item';
+
+    const titleElement = document.createElement('h3');
+    titleElement.textContent = recommendation.title;
+    recommendationElement.appendChild(titleElement);
+
+    const descriptionElement = document.createElement('p');
+    descriptionElement.textContent = recommendation.description;
+    recommendationElement.appendChild(descriptionElement);
+
+    recommendationsContainer.appendChild(recommendationElement);
+  });
 });
 
 // Initialize a global object to track sorting orders

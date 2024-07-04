@@ -8,11 +8,12 @@
 </head>
 <body>
 <h1 class="assets-title">Assets List</h1>
+<div class="view-toggle">
+    <button class="card-view" id="toggleViewBtn">Card View
+    </button>
+</div>
 <div class="assets-container">
-    <div class="view-toggle">
-        <button class="card-view" id="toggleViewBtn">Card View
-        </button>
-    </div>
+
     <div class="assets-flex-container">
         <div class="asset-row header">
             <div class="asset-header">Thumbnail</div>
@@ -29,6 +30,12 @@
     </div>
     <div class="card-view-container" style="display: none;">
         <!-- Cards will be added here by JavaScript -->
+    </div>
+    <div class="recommendation-panel">
+        <div class="title">Recommendations</div>
+        <div id="recommendations" class="recommendations-container">
+            <!-- Recommendations will be added here by JavaScript -->
+        </div>
     </div>
 </div>
 <script src="src/assetsData.js"></script>
