@@ -1,13 +1,14 @@
 body {
   max-width: 81.15rem;
   margin: auto;
-  font-family: Arial, sans-serif;
+  font-family: "source-sans-3", sans-serif;
+  background-color: #f8f8f8;
 }
 
 .asset-details-title {
   text-align: center;
-  color: #007bff;
   margin-bottom: 20px;
+  font-size: 48px;
 }
 .asset-detail-container {
   margin: 0 auto;
@@ -17,7 +18,7 @@ body {
 }
 
 .media-section {
-  background-color: #f5f5f5;
+  background-color: #fdfdfd;
   padding: 15px;
   margin-bottom: 20px;
   display: flex;
@@ -52,6 +53,13 @@ body {
 .meta-data .title {
   font-weight: 800;
   padding: 10px 0;
+  font-size: 14px;
+}
+
+.meta-data .value {
+  font-size: 16px;
+  padding: 10px 0;
+  color: #333;
 }
 
 .meta-data .tags {
@@ -63,7 +71,8 @@ body {
   background-color: lightgray;
   border-radius: 5px;
   padding: 4px;
-  color: lightslategrey;
+  color: #5a5d60;
+  font-size: 14px;
 }
 
 .usage-section {
@@ -77,15 +86,19 @@ body {
 
 .usage-section .page {
   padding: 10px;
+  background-color: #fdfdfd;
+  border-bottom: 1px solid #ddd;
 }
 
 .usage-section .page a {
   text-decoration: none;
+  color: #0054B6;
 }
 
-.page:nth-child(even) {
-  background-color: #FCF8F5; /* Slightly darker grey for even rows */
+.usage-section .page a:hover {
+  text-decoration: underline;
 }
-.page:nth-child(odd) {
-  background-color: #f5f5f5;
+
+.usage-section .page:hover{
+  background-color: #ebebeb;
 }

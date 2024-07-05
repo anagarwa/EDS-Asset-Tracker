@@ -1,13 +1,15 @@
 body {
   max-width: 90%;
   margin: auto;
-  font-family: Arial, sans-serif;
+  font-family: "source-sans-3", sans-serif;
+  background-color: #f8f8f8;
 }
 
 .assets-container {
   color: #333;
   display: flex;
   gap: 1rem;
+  margin-bottom: 4rem;
 }
 
 .asset-row {
@@ -15,15 +17,23 @@ body {
   justify-content: space-between;
   padding: 10px;
   border-bottom: 1px solid #ddd;
+  background-color: #fdfdfd;
+  align-items: center;
 }
 
+.asset-row:hover {
+  background-color: #ebebeb;
+}
 .asset-row.header {
   font-weight: bold;
-  background-color: #f2f2f2;
+  background-color: unset;
 }
 
 .assets-flex-container {
   flex: 0 0 80%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding-bottom: 8px;
 }
 
 .asset-header {
@@ -32,15 +42,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 14px;
 }
 
 .asset-header:first-child {
   flex: 0;
-  color: #f2f2f2;
+  color: #f8f8f8;
+  padding: 0 10px;
 }
+
 .asset-data {
   flex: 1;
   text-align: center;
+  font-size: 16px;
 }
 
 .asset-data:first-child {
@@ -49,12 +63,17 @@ body {
 
 .assets-title {
   text-align: center;
-  color: #007bff;
   margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 48px;
 }
 
-.asset-row:nth-child(even) {
-  background-color: #FCF8F5; /* Slightly darker grey for even rows */
+.asset-detail-link a {
+  color: #fff;
+  background-color: #0265DC;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 16px;
 }
 
 .sort-icon {
@@ -94,6 +113,7 @@ body {
   padding: 10px 20px;
   display: flex;
   align-items: center;
+  font-family: "source-sans-3", sans-serif;
 }
 
 .view-toggle button.list-view::before{
@@ -114,8 +134,9 @@ body {
 .card {
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 10px;
   width: 272px;
+  padding: 10px 10px 20px;
+  background-color: #fdfdfd;
 }
 
 .card img {
@@ -134,17 +155,25 @@ body {
   color: red;
 }
 
+.card a {
+  color: #fff;
+  background-color: #0265DC;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 16px;
+  margin-bottom: 10px;
+}
+
 .recommendation-panel {
-  padding: 15px;
-  background-color: #fcf8f5;
   border-radius: 8px;
+  border: 1px solid #ddd;
 }
 
 .recommendation-panel .title{
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 1rem;
   text-align: center;
+  padding: 6px;
 }
 .recommendations-container {
   display: flex;
@@ -159,4 +188,5 @@ body {
   padding: 10px;
   width: 200px;
   text-align: center;
+  background-color: #fdfdfd;
 }
