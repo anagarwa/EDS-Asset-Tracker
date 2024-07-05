@@ -95,11 +95,14 @@ document.addEventListener('DOMContentLoaded', function() {
       const href = `/assetDetails.html?thumbnail=${encodeURIComponent(asset.thumbnail)}`;
       card.innerHTML = `
                 <img src="${asset.thumbnail}" alt="Thumbnail">
-                <h3>${asset.title}</h3>
-                <p>Usage: ${asset.usageCount}</p>
-                <p>Actions: </p>
-                <ul>${asset.actions.map(action => `<li>${action}</li>`).join('')}</ul>
-                <a href=${href}>View Details</a>
+                <div class="title">${asset.title}</div>
+                <div class="usage">Usage: ${asset.usageCount}</div>
+                <div class="action">Actions: 
+                    <ul>${asset.actions.map(action => `<li>${action}</li>`).join('')}</ul>
+                </div>
+                <div class="view-details">
+                    <a href=${href}>View Details</a>
+                </div>
             `;
       cardViewContainer.appendChild(card);
     });

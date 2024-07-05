@@ -139,6 +139,44 @@ body {
   background-color: #fdfdfd;
 }
 
+.card .title {
+  padding-left: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.card .usage {
+  padding-left: 12px;
+  padding-top: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+/** horizontal line after usage */
+.card .usage::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #ddd;
+  margin-top: 5px;
+}
+
+.card .action {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+  padding-left: 12px;
+}
+
+.card .view-details {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  padding-top: 10px;
+}
 .card img {
   object-fit: cover;
   border-radius: 15px;
@@ -153,6 +191,8 @@ body {
 
 .card ul {
   color: red;
+  margin: unset;
+  font-weight: 200;
 }
 
 .card a {
@@ -161,7 +201,6 @@ body {
   text-decoration: none;
   padding: 8px;
   border-radius: 16px;
-  margin-bottom: 10px;
 }
 
 .recommendation-panel {
