@@ -5,6 +5,9 @@ body {
   background-color: #f8f8f8;
 }
 
+.assets-usage-report {
+  display: none;
+}
 .assets-container {
   color: #333;
   display: flex;
@@ -98,6 +101,42 @@ body {
   color: red;
 }
 
+.actions ul li {
+  white-space: nowrap; /* Prevents the text from wrapping to the next line */
+  text-overflow: ellipsis;
+  list-style-type: none;
+}
+
+.actions .warning {
+  color: orange;
+  font-style: italic;
+}
+
+/** add icon before warning */
+.actions .warning::before {
+  content: url('icons/warning.svg'); /* Adjust the path as necessary */
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
+.card .action .warning::before {
+  content: url('icons/warning.svg'); /* Adjust the path as necessary */
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
+.actions .error::before {
+  content: url('icons/error.svg'); /* Adjust the path as necessary */
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
+.action .error::before {
+  content: url('icons/error.svg'); /* Adjust the path as necessary */
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
 .view-toggle {
   display: flex;
   position: relative;
@@ -164,10 +203,13 @@ body {
 .card .action {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
   font-size: 14px;
   font-weight: 600;
-  padding-left: 12px;
+  padding: 10px 0 10px 12px;
+}
+
+.card .action ul li {
+  list-style-type: none;
 }
 
 .card .view-details {
@@ -195,6 +237,11 @@ body {
   font-weight: 200;
 }
 
+.action .warning {
+  color: orange;
+  font-style: italic;
+}
+
 .card a {
   color: #fff;
   background-color: #0265DC;
@@ -203,29 +250,72 @@ body {
   border-radius: 16px;
 }
 
-.recommendation-panel {
+.insights-panel {
   border-radius: 8px;
   border: 1px solid #ddd;
 }
 
-.recommendation-panel .title{
+.insights-panel .title{
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
   padding: 6px;
 }
-.recommendations-container {
+.insights-container {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
 }
 
-.recommendation-item {
+.insight-item {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 10px;
   width: 200px;
   text-align: center;
   background-color: #fdfdfd;
+  cursor: pointer;
+}
+
+.insight-item:hover {
+  background-color: #ebebeb;
+  text-decoration: underline;
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #09f;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  font-style: italic;
+  color: #fff;
+  padding: 0 5px;
 }

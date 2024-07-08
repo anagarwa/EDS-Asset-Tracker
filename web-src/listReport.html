@@ -3,42 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assets List</title>
+    <title>Assets Usage Report</title>
     <link rel="stylesheet" href="listReport.css">
     <link rel="stylesheet" href="https://use.typekit.net/dil4fkj.css">
 </head>
 <body>
-<h1 class="assets-title">Assets Summary</h1>
-<div class="view-toggle">
-    <button class="card-view" id="toggleViewBtn">Card View
-    </button>
-</div>
-<div class="assets-container">
+<div class="assets-usage-report">
+    <h1 class="assets-title">Assets Usage Report</h1>
+    <div class="view-toggle">
+        <button class="card-view" id="toggleViewBtn">Card View
+        </button>
+    </div>
+    <div class="assets-container">
 
-    <div class="assets-flex-container">
-        <div class="asset-row header">
-            <div class="asset-header">Thumbnail</div>
-            <div id="sortTitle" class="asset-header">Title
-                <i class="sort-icon"></i>
+        <div class="assets-flex-container">
+            <div class="asset-row header">
+                <div class="asset-header">Thumbnail</div>
+                <div id="sortTitle" class="asset-header">Title
+                    <i class="sort-icon"></i>
+                </div>
+                <div class="asset-header">Mime Type</div>
+                <div id="sortUsage" class="asset-header">Usage
+                    <i class="sort-icon"></i>
+                </div>
+                <div class="asset-header">Actions</div>
+                <div class="asset-header">Details</div>
             </div>
-            <div id="sortUsage" class="asset-header">Usage
-                <i class="sort-icon"></i>
+            <!-- Asset rows will be added here by assetsData.js -->
+        </div>
+        <div class="card-view-container" style="display: none;">
+            <!-- Cards will be added here by JavaScript -->
+        </div>
+        <div class="insights-panel">
+            <div class="title">Assets insights</div>
+            <div id="assets-insights" class="insights-container">
+                <!-- Recommendations will be added here by JavaScript -->
             </div>
-            <div class="asset-header">Actions</div>
-            <div class="asset-header">Details</div>
-        </div>
-        <!-- Asset rows will be added here by assetsData.js -->
-    </div>
-    <div class="card-view-container" style="display: none;">
-        <!-- Cards will be added here by JavaScript -->
-    </div>
-    <div class="recommendation-panel">
-        <div class="title">Recommendations</div>
-        <div id="recommendations" class="recommendations-container">
-            <!-- Recommendations will be added here by JavaScript -->
         </div>
     </div>
+    <script type='module' src="src/assetsData.js"></script>
 </div>
-<script src="src/assetsData.js"></script>
 </body>
 </html>
