@@ -51,13 +51,13 @@ body {
 .asset-header:first-child {
   flex: 0;
   color: #f8f8f8;
-  padding: 0 10px;
 }
 
 .asset-data {
   flex: 1;
   text-align: center;
   font-size: 16px;
+  padding-left: 5px;
 }
 
 .asset-data:first-child {
@@ -66,7 +66,6 @@ body {
 
 .assets-title {
   text-align: center;
-  margin-bottom: 20px;
   margin-top: 20px;
   font-size: 48px;
 }
@@ -99,6 +98,10 @@ body {
 .actions {
   text-align: justify;
   color: red;
+}
+
+.actions ul {
+  padding-inline-start:unset;
 }
 
 .actions ul li {
@@ -156,7 +159,8 @@ body {
 }
 
 .view-toggle button.list-view::before{
-  content: url('icons/list_icon.svg'); /* Adjust the path as necessary */
+  content: url('icons/list_icon.svg');
+  width: auto;
 }
 
 .view-toggle button.card-view::before{
@@ -201,8 +205,6 @@ body {
 }
 
 .card .action {
-  display: flex;
-  justify-content: space-between;
   font-size: 14px;
   font-weight: 600;
   padding: 10px 0 10px 12px;
@@ -235,6 +237,8 @@ body {
   color: red;
   margin: unset;
   font-weight: 200;
+  padding-inline-start: 10px;
+  padding-top: 10px;
 }
 
 .action .warning {
@@ -318,4 +322,23 @@ body {
   font-style: italic;
   color: #fff;
   padding: 0 5px;
+}
+
+.total-assets {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 0;
+}
+
+.page-filter {
+  background-color: lightgray;
+  border-radius: 5px;
+  padding: 4px;
+  color: #5a5d60;
+  font-size: 15px;
+  width: max-content;
+}
+
+.page-filter a {
+  color: #0054B6;
 }

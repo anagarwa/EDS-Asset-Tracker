@@ -15,6 +15,7 @@ var defaultThumbnail = require('../no-image.png');
 
   const queryParams = new URLSearchParams(window.location.search);
   const hlxUrl = queryParams.get('hlxUrl');
+  const pagePath = queryParams.get('pagePath');
   let data = {};
   try {
     const response = await fetch(`https://288650-edsassettracker-stage.adobeio-static.net/api/v1/web/EDS-Asset-Tracker1/fetchList?hlxUrl=${hlxUrl}`);
@@ -41,6 +42,19 @@ function init(data) {
   let expiredAssets = 0;
   let aboutToExpireAssets = 0;
   let tagsMisMatchedAssets = 0;
+  // if pagePath is given then filter the response.payload.assetDetails into a new json object have filter out those entry which doesn't have pagePath in it
+  if (pagePath) {
+    const filteredAssetDetails = {};
+    Object.entries(response.payload.assetDetails).forEach(([urn, asset]) => {
+      if (asset.pagePath.includes(pagePath)) {
+        filteredAssetDetails[urn] = asset;
+      }
+    });
+    response.payload.assetDetails = filteredAssetDetails;
+    document.querySelector('.page-filter').innerHTML = `For page: <a href='${hlxUrl}${pagePath}' target='_blank'>${hlxUrl}${pagePath}</a>`
+  }
+
+  document.querySelector('.total-assets').textContent = `Total Assets: ${Object.keys(response.payload.assetDetails).length}`;
   Object.entries(response.payload.assetDetails).forEach(([urn, asset]) => {
     const assetRow = document.createElement('div');
     assetRow.className = 'asset-row';
@@ -60,8 +74,13 @@ function init(data) {
       aboutToExpireAssets += 1;
     }
     if (asset.tagsMisMatchedPages.length > 0) {
-      asset.actions.push(`Compliance issue (${asset.tagsMisMatchedPages.length}): Tags mismatched`);
-      tagsMisMatchedAssets += 1;
+      if(pagePath && asset.tagsMisMatchedPages.includes(pagePath)) {
+        asset.actions.push(`Compliance issue: Tags mismatched`);
+        tagsMisMatchedAssets += 1;
+      } else {
+        asset.actions.push(`Compliance issue (${asset.tagsMisMatchedPages.length}): Tags mismatched`);
+        tagsMisMatchedAssets += 1;
+      }
     }
 
     // Convert asset details into an array of [key, value] pairs

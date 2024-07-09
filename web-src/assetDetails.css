@@ -89,12 +89,14 @@ body {
   background-color: #fdfdfd;
   border-bottom: 1px solid #ddd;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .mismatched-tag {
   padding: 0 10px;
   background-color: orange;
-  border-radius: 10px;
+  border-radius: 16px;
   margin: 0 10px;
 }
 
@@ -166,4 +168,13 @@ body {
     border-style: solid;
     border-color: #555 transparent transparent transparent;
   }
+}
+
+.assets-usage {
+  color: #fff;
+  background-color: #0265dc;
+  border-radius: 16px;
+  padding: 8px;
+  text-decoration: none;
+  cursor: pointer;
 }

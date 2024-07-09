@@ -81,18 +81,24 @@ function init(data) {
     asset.pagePath.forEach(page => {
       const pageDiv = document.createElement('div');
       pageDiv.classList.add('page');
-      pageDiv.textContent = `${index++}. `;
       const pageLink = document.createElement('a');
       pageLink.href = hlxUrl+page;
-      pageLink.textContent = hlxUrl+page;
+      pageLink.textContent = `${index++}. `+hlxUrl+page;
       pageDiv.appendChild(pageLink);
       if(asset.tagsMisMatchedPages.includes(page)){
         const mismatchedTag = document.createElement('div');
         mismatchedTag.classList.add('mismatched-tag');
         mismatchedTag.textContent = "Mismatched Tags";
+        //create view-detail
+        const viewDetail = document.createElement('div');
+        viewDetail.classList.add('assets-usage');
+        viewDetail.textContent = "Assets Usage Report";
+        viewDetail.addEventListener('click', () => {
+          window.location.href = `/assetsUsageReport.html?hlxUrl=${hlxUrl}&pagePath=${page}`;
+        });
         pageDiv.appendChild(mismatchedTag);
+        pageDiv.appendChild(viewDetail);
       }
-
       pagesSection.appendChild(pageDiv);
     });
   }
