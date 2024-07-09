@@ -144,7 +144,6 @@ body {
   display: flex;
   position: relative;
   justify-content: flex-end;
-  padding: 1rem 0;
 }
 
 .view-toggle button {
