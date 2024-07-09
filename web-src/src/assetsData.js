@@ -53,7 +53,10 @@ function init(data) {
     response.payload.assetDetails = filteredAssetDetails;
     const pageFilter = document.querySelector('.page-filter');
     pageFilter.classList.remove('all');
-    pageFilter.innerHTML = `<div><div style='font-size: 14px; font-weight: 600' >Page Path</div><a href='${hlxUrl}${pagePath}' target='_blank'>${hlxUrl}${pagePath}</a></div>`;
+    // get last part of the pagePath and replace - and _ with space
+    const pagePathParts = pagePath.split('/');
+    pageFilter.innerHTML = `<div class='title'> Page Details</div></div><div><div style='font-size: 14px; font-weight: 600' >Page Path</div><a href='${hlxUrl}${pagePath}' target='_blank'>${pagePathParts[pagePathParts.length - 1].replace(/-/g, ' ').replace(/_/g, ' ')}</a></div>`;
+    //pageFilter.innerHTML = `<div><div style='font-size: 14px; font-weight: 600' >Page Path</div><a href='${hlxUrl}${pagePath}' target='_blank'>${hlxUrl}${pagePath}</a></div>`;
     const parentDiv = document.createElement('div');
     parentDiv.innerHTML = `<div style='font-size: 14px; font-weight: 600; padding-bottom: 4px;' >Tags</div>`;
     const tagsDiv = document.createElement('div');
