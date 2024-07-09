@@ -51,7 +51,22 @@ function init(data) {
       }
     });
     response.payload.assetDetails = filteredAssetDetails;
-    document.querySelector('.page-filter').innerHTML = `For page: <a href='${hlxUrl}${pagePath}' target='_blank'>${hlxUrl}${pagePath}</a>`
+    const pageFilter = document.querySelector('.page-filter');
+    pageFilter.classList.remove('all');
+    pageFilter.innerHTML = `<div><div style='font-size: 14px; font-weight: 600' >Page Path</div><a href='${hlxUrl}${pagePath}' target='_blank'>${hlxUrl}${pagePath}</a></div>`;
+    const parentDiv = document.createElement('div');
+    parentDiv.innerHTML = `<div style='font-size: 14px; font-weight: 600; padding-bottom: 4px;' >Tags</div>`;
+    const tagsDiv = document.createElement('div');
+    tagsDiv.className = 'list-tags';
+
+    response.payload.pageDetails[pagePath].tags.forEach(tag => {
+      const tagDiv = document.createElement('div');
+      tagDiv.className = 'tags';
+      tagDiv.textContent = tag
+      tagsDiv.appendChild(tagDiv);
+    });
+    parentDiv.appendChild(tagsDiv);
+    pageFilter.appendChild(parentDiv);
   }
 
   document.querySelector('.total-assets').textContent = `Total Assets: ${Object.keys(response.payload.assetDetails).length}`;
