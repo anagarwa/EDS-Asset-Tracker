@@ -115,6 +115,11 @@ body {
   font-style: italic;
 }
 
+.actions .no-action-item {
+  color: green;
+  font-style: italic;
+}
+
 /** add icon before warning */
 .actions .warning::before {
   content: url('icons/warning.svg'); /* Adjust the path as necessary */
@@ -122,8 +127,20 @@ body {
   vertical-align: middle;
 }
 
+.actions .no-action-item::before {
+  content: url('icons/check.svg'); /* Adjust the path as necessary */
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
 .card .action .warning::before {
   content: url('icons/warning.svg'); /* Adjust the path as necessary */
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
+.card .action .no-action-item::before {
+  content: url('icons/check.svg'); /* Adjust the path as necessary */
   padding-right: 5px;
   vertical-align: middle;
 }
@@ -242,6 +259,11 @@ body {
 
 .action .warning {
   color: orange;
+  font-style: italic;
+}
+
+.action .no-action-item {
+  color: green;
   font-style: italic;
 }
 

@@ -89,16 +89,16 @@ function init(data) {
         const mismatchedTag = document.createElement('div');
         mismatchedTag.classList.add('mismatched-tag');
         mismatchedTag.textContent = "Mismatched Tags";
-        //create view-detail
-        const viewDetail = document.createElement('div');
-        viewDetail.classList.add('assets-usage');
-        viewDetail.textContent = "Assets Usage Report";
-        viewDetail.addEventListener('click', () => {
-          window.location.href = `/assetsUsageReport.html?hlxUrl=${hlxUrl}&pagePath=${page}`;
-        });
         pageDiv.appendChild(mismatchedTag);
-        pageDiv.appendChild(viewDetail);
       }
+      //create view-detail
+      const viewDetail = document.createElement('div');
+      viewDetail.classList.add('assets-usage');
+      viewDetail.textContent = "Assets Usage Report";
+      viewDetail.addEventListener('click', () => {
+        window.location.href = `/assetsUsageReport.html?hlxUrl=${hlxUrl}&pagePath=${page}`;
+      });
+      pageDiv.appendChild(viewDetail);
       pagesSection.appendChild(pageDiv);
     });
   }

@@ -84,21 +84,26 @@ function init(data) {
     // create actions array on the base of isExpired , isAboutExpired and tagsMisMatched
     asset.actions = [];
     if (asset.isExpired) {
-      asset.actions.push('Asset is expired');
+      asset.actions.push('Error: Asset is expired');
       expiredAssets += 1;
     }
     if (asset.toBeExpired) {
       asset.actions.push('Warning: Asset is about to expire');
       aboutToExpireAssets += 1;
     }
-    if (asset.tagsMisMatchedPages.length > 0) {
-      if(pagePath && asset.tagsMisMatchedPages.includes(pagePath)) {
+    if (pagePath) {
+      if(asset.tagsMisMatchedPages.includes(pagePath)) {
         asset.actions.push(`Compliance issue: Tags mismatched`);
         tagsMisMatchedAssets += 1;
-      } else {
-        asset.actions.push(`Compliance issue (${asset.tagsMisMatchedPages.length}): Tags mismatched`);
-        tagsMisMatchedAssets += 1;
       }
+    }
+    else if (asset.tagsMisMatchedPages.length > 0) {
+      asset.actions.push(`Compliance issue (${asset.tagsMisMatchedPages.length}): Tags mismatched`);
+      tagsMisMatchedAssets += 1;
+    }
+
+    if(asset.actions.length === 0) {
+      asset.actions.push('No action item');
     }
 
     // Convert asset details into an array of [key, value] pairs
@@ -132,8 +137,11 @@ function init(data) {
             if (action.includes('Warning') || action.includes('Compliance')) {
               li.classList.add('warning');
             }
-            else {
+            else if (action.includes('Error')){
               li.classList.add('error');
+            }
+            else {
+              li.classList.add('no-action-item');
             }
             li.textContent = action;
             ul.appendChild(li);
@@ -185,6 +193,18 @@ function init(data) {
     }
   });
 
+  function getActionClass(action) {
+    if (action.includes('Warning') || action.includes('Compliance')) {
+      return 'warning';
+    }
+    else if (action.includes('Error')){
+      return 'error';
+    }
+    else {
+      return 'no-action-item';
+    }
+  }
+
   function populateCardView() {
     cardViewContainer.innerHTML = ''; // Clear existing cards
     Object.entries(response.payload.assetDetails).forEach(([urn, asset]) => {
@@ -206,7 +226,7 @@ function init(data) {
             <div class="title">${asset.metadata.repositoryMetadata['repo:name']}</div>
             <div class="usage">Usage: ${asset.pagePath.length}</div>
             <div class="action">Actions: 
-                <ul>${asset.actions.map(action => `<li class=${action.includes('Warning') || action.includes('Compliance') ? 'warning' : 'error'}>${action}</li>`).join('')}</ul>
+                <ul>${asset.actions.map(action => `<li class=${getActionClass(action)}>${action}</li>`).join('')}</ul>
             </div>
             <div class="view-details">
                 <a href=${href}>View Details</a>
