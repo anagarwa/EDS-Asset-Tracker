@@ -20,7 +20,8 @@ function init(data) {
   //const asset = mockData.find(asset => asset.thumbnail === thumbnailUrl);
   const keysToShow = ['title', 'mimeType', 'usageCount', 'expirationDate', 'tags'];
 
-  asset.title = asset.metadata.repositoryMetadata['repo:name'];
+  asset.title = asset.metadata.repositoryMetadata ? asset.metadata.repositoryMetadata['repo:name'] : 'NA';
+
   // add usageCount to asset object
   asset.usageCount = asset.pagePath.length
 
@@ -41,7 +42,7 @@ function init(data) {
 
     const metaDataSection = document.querySelector('.meta-data-section');
     keysToShow.forEach(key => {
-      const metaDataCard = createMetaDataCard(keyMap[key], asset[key]);
+      const metaDataCard = createMetaDataCard(keyMap[key], asset[key], asset.toBeExpired, asset.isExpired);
       if (metaDataCard) {
         metaDataCard.classList.add(key);
         metaDataSection.appendChild(metaDataCard);
@@ -103,9 +104,16 @@ function init(data) {
     });
   }
 
-  function createMetaDataCard(title, value) {
+  function createMetaDataCard(title, value, toBeExpired, isExpired) {
     const metaDataCard = document.createElement('div');
     metaDataCard.className = 'meta-data';
+    let valueClass = 'value';
+    if(title === 'Expiry Date' && value ) {
+      if(toBeExpired)
+        valueClass = 'value warning';
+      if(isExpired)
+        valueClass = 'value error';
+    }
     if(value) {
       // if key is tags then value is an array of tags so create div for each tag
       if (title === 'Tags') {
@@ -123,7 +131,7 @@ function init(data) {
       } else {
         metaDataCard.innerHTML = `
       <div class="title">${title}</div>
-      <div class="value">${value}</div>
+      <div class="${valueClass}">${value}</div>
   `;
       }
     }

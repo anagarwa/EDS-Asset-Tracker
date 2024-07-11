@@ -62,6 +62,18 @@ body {
   color: #333;
 }
 
+.expirationDate .value.warning:before {
+  content: url("./icons/warning.svg");
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
+.expirationDate .value.error:before {
+  content: url("./icons/error.svg");
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
 .meta-data .tags {
   display: flex;
   gap: 1rem;

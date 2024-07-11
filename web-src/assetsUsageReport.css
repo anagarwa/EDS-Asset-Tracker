@@ -403,3 +403,18 @@ body {
   border-radius: 8px;
   border-bottom: 1px solid #ddd;
 }
+
+.all-asset-usage-report {
+  width: max-content;
+  color: #fff;
+  background-color: #0265dc;
+  border-radius: 16px;
+  padding: 8px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.all-asset-usage-report:hover {
+  text-decoration: underline;
+}

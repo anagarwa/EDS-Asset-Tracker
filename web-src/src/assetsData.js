@@ -44,6 +44,7 @@ function init(data) {
   let tagsMisMatchedAssets = 0;
   // if pagePath is given then filter the response.payload.assetDetails into a new json object have filter out those entry which doesn't have pagePath in it
   if (pagePath) {
+    document.querySelector('.assets-title').textContent = 'Page Assets Usage Report';
     const filteredAssetDetails = {};
     Object.entries(response.payload.assetDetails).forEach(([urn, asset]) => {
       if (asset.pagePath.includes(pagePath)) {
@@ -51,6 +52,13 @@ function init(data) {
       }
     });
     response.payload.assetDetails = filteredAssetDetails;
+    // before page-filter add a div to return to all assets
+    const allAssetsDiv = document.getElementById('all-asset-usage-report');
+    allAssetsDiv.classList.add('all-asset-usage-report');
+    allAssetsDiv.textContent = '< Back to site assets usage report';
+    allAssetsDiv.addEventListener('click', () => {
+      window.location.href = `/assetsUsageReport.html?hlxUrl=${hlxUrl}`;
+    });
     const pageFilter = document.querySelector('.page-filter');
     pageFilter.classList.remove('all');
     // get last part of the pagePath and replace - and _ with space
@@ -106,10 +114,11 @@ function init(data) {
       asset.actions.push('No action item');
     }
 
+    const assetTitle  = asset.metadata.repositoryMetadata ? asset.metadata.repositoryMetadata['repo:name'] : 'NA';
     // Convert asset details into an array of [key, value] pairs
     const assetEntries = Object.entries({
       thumbnail: cleanUrl, // Assuming assetUrl is the thumbnail URL
-      title: asset.metadata.repositoryMetadata['repo:name'],
+      title: assetTitle,
       type: asset.mimeType,
       usageCount: asset.pagePath.length,
       actions: asset.actions // Assuming actions is an array of action strings
@@ -220,10 +229,10 @@ function init(data) {
        thumbnail = `${cleanThumbnailUrl.protocol}//${cleanThumbnailUrl.host}${cleanThumbnailUrl.pathname}`;
       else
         thumbnail = defaultThumbnail;
-
+      const assetTitle  = asset.metadata.repositoryMetadata ? asset.metadata.repositoryMetadata['repo:name'] : 'NA';
       card.innerHTML = `
             <img src="${thumbnail}" alt="Thumbnail">
-            <div class="title">${asset.metadata.repositoryMetadata['repo:name']}</div>
+            <div class="title">${assetTitle}</div>
             <div class="usage">Usage: ${asset.pagePath.length}</div>
             <div class="action">Actions: 
                 <ul>${asset.actions.map(action => `<li class=${getActionClass(action)}>${action}</li>`).join('')}</ul>
