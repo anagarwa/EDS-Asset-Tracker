@@ -82,10 +82,13 @@ function init(data) {
     asset.pagePath.forEach(page => {
       const pageDiv = document.createElement('div');
       pageDiv.classList.add('page');
+      const linkDiv = document.createElement('div');
+      linkDiv.classList.add('link');
       const pageLink = document.createElement('a');
       pageLink.href = hlxUrl+page;
       pageLink.textContent = `${index++}. `+hlxUrl+page;
-      pageDiv.appendChild(pageLink);
+      linkDiv.appendChild(pageLink);
+      pageDiv.appendChild(linkDiv);
       if(asset.tagsMisMatchedPages.includes(page)){
         const mismatchedTag = document.createElement('div');
         mismatchedTag.classList.add('mismatched-tag');
@@ -101,6 +104,21 @@ function init(data) {
       });
       pageDiv.appendChild(viewDetail);
       pagesSection.appendChild(pageDiv);
+      //fetch https://288650-edsassettracker-stage.adobeio-static.net/api/v1/web/EDS-Asset-Tracker1/fetchList?hlxUrl=${hlxUrl} and get the data for the page
+      fetch(`https://288650-edsassettracker-stage.adobeio-static.net/api/v1/web/EDS-Asset-Tracker1/fetchList?hlxUrl=${hlxUrl}`)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data.payload.pageDetails[page].tags);
+            // create div and add tags to linkdiv
+            const tagsDiv = document.createElement('div');
+            tagsDiv.classList.add('tags');
+            data.payload.pageDetails[page].tags.forEach(tag => {
+              const tagDiv = document.createElement('div');
+              tagDiv.textContent = tag;
+              tagsDiv.appendChild(tagDiv);
+            });
+            linkDiv.appendChild(tagsDiv);
+          });
     });
   }
 

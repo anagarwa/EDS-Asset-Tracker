@@ -190,3 +190,19 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+.usage-section .page .link .tags {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: max-content;
+  padding-top: 5px;
+}
+
+.usage-section .page .link .tags div {
+  background-color: lightgray;
+  border-radius: 5px;
+  padding: 4px;
+  color: #5a5d60;
+  font-size: 14px;
+}
