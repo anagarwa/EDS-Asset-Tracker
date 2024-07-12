@@ -80,7 +80,6 @@ function init(data) {
     pageFilter.appendChild(parentDiv);
   }
 
-  document.querySelector('.total-assets').textContent = `Total Assets: ${Object.keys(response.payload.assetDetails).length}`;
   Object.entries(response.payload.assetDetails).forEach(([urn, asset]) => {
     const assetRow = document.createElement('div');
     assetRow.className = 'asset-row';
@@ -247,6 +246,13 @@ function init(data) {
 
   // add insights to asset object
   // Create a button element
+
+  const totalAssets = document.createElement('div');
+  totalAssets.classList.add('total-assets');
+  totalAssets.textContent = `Total Assets: ${Object.keys(response.payload.assetDetails).length}`;
+  insightsContainer.appendChild(totalAssets);
+  Object.keys(response.payload.assetDetails).length;
+
   const topUsedButton = document.createElement('div');
   topUsedButton.classList.add('top-used-button','insight-item');
   topUsedButton.textContent = 'Top Used Asset';

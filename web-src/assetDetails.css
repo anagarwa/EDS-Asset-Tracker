@@ -78,6 +78,7 @@ body {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  padding: 10px 0;
 }
 .meta-data .tags div {
   background-color: lightgray;
@@ -85,6 +86,12 @@ body {
   padding: 4px;
   color: #5a5d60;
   font-size: 14px;
+}
+
+.meta-data.status.approved .value::before{
+  content: url('./icons/check.svg');
+  padding-right: 5px;
+  vertical-align: middle;
 }
 
 .usage-section {

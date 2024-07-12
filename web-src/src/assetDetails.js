@@ -18,9 +18,11 @@ function init(data) {
   });
   const asset = data;
   //const asset = mockData.find(asset => asset.thumbnail === thumbnailUrl);
-  const keysToShow = ['title', 'mimeType', 'usageCount', 'expirationDate', 'tags'];
+  const keysToShow = ['title', 'mimeType', 'usageCount', 'expirationDate', 'tags', 'status'];
 
   asset.title = asset.metadata.repositoryMetadata ? asset.metadata.repositoryMetadata['repo:name'] : 'NA';
+
+  asset.status = asset.metadata.assetMetadata ? asset.metadata.assetMetadata['dam:assetStatus'] : 'NA';
 
   // add usageCount to asset object
   asset.usageCount = asset.pagePath.length
@@ -31,7 +33,8 @@ function init(data) {
     mimeType: 'Mime Type',
     usageCount: 'Usage Count',
     expirationDate: 'Expiry Date',
-    tags: 'Tags'
+    tags: 'Tags',
+    status: 'Status'
   };
 
   if (asset) {
@@ -48,6 +51,10 @@ function init(data) {
         metaDataSection.appendChild(metaDataCard);
       }
     });
+    if(asset.status === 'approved') {
+      metaDataSection.querySelector('.meta-data.status').classList.add('approved');
+    }
+
     /* create a copy button on click the path should be copied to clip board
    */
     const copyButton = document.createElement('div')

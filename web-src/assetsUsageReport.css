@@ -346,7 +346,7 @@ body {
 }
 
 .total-assets {
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 600;
   padding: 10px 0;
 }
@@ -359,6 +359,7 @@ body {
   color: #5a5d60;
   font-size: 15px;
   width: max-content;
+  margin-bottom: 10px;
 }
 
 .page-filter .list-tags {
