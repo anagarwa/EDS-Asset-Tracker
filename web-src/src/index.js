@@ -9,6 +9,88 @@ import actionWebInvoke from './utils.js'
 
 let state = {}
 
+
+/**
+ * {
+ * "assetID":"urn:aaid:aem:63fa8110-5591-429b-a562-982f8d6571c2",
+ * "assetPath":"https://delivery-p49105-e258067.adobeaemcloud.com/adobe/assets/urn:aaid:aem:63fa8110-5591-429b-a562-982f8d6571c2/play?accept-experimental=1",
+ * "metadata":{
+ * "assetId":"urn:aaid:aem:63fa8110-5591-429b-a562-982f8d6571c2",
+ * "assetMetadata":{
+ * "dam:assetStatus":"approved"
+ * },
+ * "repositoryMetadata":{
+ * "dc:format":"video/mp4",
+ * "repo:createDate":"2024-02-27T08:57:55.560Z",
+ * "repo:size":4439271
+ * }
+ * },
+ * "pagePath":"/"
+ * }
+ *
+ * {
+ *     payload: {
+ *         assetDetails: {
+ *                        "urn:aaid:aem:63fa8110-5591-429b-a562-982f8d6571c2" : {
+ *                                          assetUrl : "https://delivery-p49105-e258067.adobeaemcloud.com/adobe/assets/urn:aaid:aem:63fa8110-5591-429b-a562-982f8d6571c2/play?accept-experimental=1"
+ *     metadata : {},
+ *     pages :[
+ *         {path: pagePath, tags: []},
+ *         {path: pagePath, tags: []},
+ *     ],
+ *     expiryDate:
+ *     mimeType:
+ *     tags:
+ *     isExpired:
+ *     isAboutExpired:
+ *     tagsMisMatched:
+ *     },
+ * "urn:aaid:aem:63fa8110-5591-429b-a562-982fjnaihscbiac" : {
+ *
+ * },
+ * // assetDetails Concluded
+ * },
+ *
+ * pageDetails: {
+ *     "/":{
+ *         totalAssets:number,
+ *         tags:[],
+ *         metadata:
+ *         assets:[
+ *             {
+ *                 assetId :
+ *                 tags:
+ *                 expiry:
+ *                 mimeTye:
+ *             },
+ *             {
+ *                 assetId :
+ *                 tags:
+ *                 expiry:
+ *                 mimeTye:
+ *             },
+ *         ]
+ *     },
+ *     "/abc":{}
+ * },
+ *
+ * recommendation: {
+ *     assetsToBeExpired
+ * }
+ *
+ *
+ *     }
+ * }
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
+
+
 window.onload = () => {
   /* Here you can bootstrap your application and configure the integration with the Adobe Experience Cloud Shell */
   try {
