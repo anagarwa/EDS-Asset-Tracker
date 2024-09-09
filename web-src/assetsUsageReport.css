@@ -1,15 +1,34 @@
+:root {
+  --color-background: #f8f8f8;
+  --color-text: #333;
+  --color-border: #ddd;
+  --color-hover: #ebebeb;
+  --color-primary: #0265DC;
+  --color-warning: orange;
+  --color-error: red;
+  --color-success: green;
+  --color-tooltip-background: #555;
+  --color-tooltip-text: white;
+  --color-lightgray: lightgray;
+  --color-white: #fff;
+  --color-gray: #5a5d60;
+  --color-blue: #0054B6;
+  --color-spinner: #09f;
+}
+
 body {
   max-width: 90%;
   margin: auto;
   font-family: "source-sans-3", sans-serif;
-  background-color: #f8f8f8;
+  background-color: var(--color-background);
 }
 
 .assets-usage-report {
   display: none;
 }
+
 .assets-container {
-  color: #333;
+  color: var(--color-text);
   display: flex;
   gap: 1rem;
   margin-bottom: 4rem;
@@ -19,14 +38,15 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
-  background-color: #fdfdfd;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-white);
   align-items: center;
 }
 
 .asset-row:hover {
-  background-color: #ebebeb;
+  background-color: var(--color-hover);
 }
+
 .asset-row.header {
   font-weight: bold;
   background-color: unset;
@@ -34,7 +54,7 @@ body {
 
 .assets-flex-container {
   flex: 0 0 80%;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   padding-bottom: 8px;
 }
@@ -50,7 +70,7 @@ body {
 
 .asset-header:first-child {
   flex: 0;
-  color: #f8f8f8;
+  color: var(--color-background);
 }
 
 .asset-data {
@@ -72,8 +92,8 @@ body {
 }
 
 .asset-detail-link a {
-  color: #fff;
-  background-color: #0265DC;
+  color: var(--color-white);
+  background-color: var(--color-primary);
   text-decoration: none;
   padding: 8px;
   border-radius: 16px;
@@ -81,11 +101,11 @@ body {
 
 .sort-icon {
   margin-left: 5px;
-  background-image: url('icons/sorting.svg'); /* Adjust the path as necessary */
+  background-image: url('icons/sorting.svg');
   background-repeat: no-repeat;
   background-size: contain;
-  width: 24px; /* Adjust based on your icon's size */
-  height: 24px; /* Adjust based on your icon's size */
+  width: 24px;
+  height: 24px;
   display: inline-block;
 }
 
@@ -98,62 +118,46 @@ body {
 
 .actions {
   text-align: justify;
-  color: red;
+  color: var(--color-error);
 }
 
 .actions ul {
-  padding-inline-start:unset;
+  padding-inline-start: unset;
 }
 
 .actions ul li {
-  white-space: nowrap; /* Prevents the text from wrapping to the next line */
+  white-space: nowrap;
   text-overflow: ellipsis;
   list-style-type: none;
 }
 
 .actions .warning {
-  color: orange;
+  color: var(--color-warning);
   font-style: italic;
 }
 
 .actions .no-action-item {
-  color: green;
+  color: var(--color-success);
   font-style: italic;
 }
 
-/** add icon before warning */
-.actions .warning::before {
-  content: url('icons/warning.svg'); /* Adjust the path as necessary */
-  padding-right: 5px;
-  vertical-align: middle;
-}
-
-.actions .no-action-item::before {
-  content: url('icons/check.svg'); /* Adjust the path as necessary */
-  padding-right: 5px;
-  vertical-align: middle;
-}
-
+.actions .warning::before,
 .card .action .warning::before {
-  content: url('icons/warning.svg'); /* Adjust the path as necessary */
+  content: url('icons/warning.svg');
   padding-right: 5px;
   vertical-align: middle;
 }
 
+.actions .no-action-item::before,
 .card .action .no-action-item::before {
-  content: url('icons/check.svg'); /* Adjust the path as necessary */
+  content: url('icons/check.svg');
   padding-right: 5px;
   vertical-align: middle;
 }
 
-.actions .error::before {
-  content: url('icons/error.svg'); /* Adjust the path as necessary */
-  padding-right: 5px;
-  vertical-align: middle;
-}
-
+.actions .error::before,
 .action .error::before {
-  content: url('icons/error.svg'); /* Adjust the path as necessary */
+  content: url('icons/error.svg');
   padding-right: 5px;
   vertical-align: middle;
 }
@@ -175,55 +179,52 @@ body {
   font-family: "source-sans-3", sans-serif;
 }
 
-.view-toggle button.list-view::before{
+.view-toggle button.list-view::before {
   content: url('icons/list_icon.svg');
   width: auto;
 }
 
-.view-toggle button.card-view::before{
-  content: url('icons/grid_icon.svg'); /* Adjust the path as necessary */
+.view-toggle button.card-view::before {
+  content: url('icons/grid_icon.svg');
 }
 
 .card-view-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  flex: 0 0 80%
+  flex: 0 0 80%;
 }
 
 .card {
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   width: 272px;
   padding: 10px 10px 20px;
-  background-color: #fdfdfd;
+  background-color: var(--color-white);
 }
 
-.card .title {
+.card .title,
+.card .usage,
+.card .action {
   padding-left: 12px;
   font-size: 14px;
   font-weight: 600;
 }
 
 .card .usage {
-  padding-left: 12px;
   padding-top: 12px;
-  font-size: 14px;
-  font-weight: 600;
 }
-/** horizontal line after usage */
+
 .card .usage::after {
   content: "";
   display: block;
   width: 100%;
   height: 1px;
-  background-color: #ddd;
+  background-color: var(--color-border);
   margin-top: 5px;
 }
 
 .card .action {
-  font-size: 14px;
-  font-weight: 600;
   padding: 10px 0 10px 12px;
 }
 
@@ -238,6 +239,7 @@ body {
   align-content: center;
   padding-top: 10px;
 }
+
 .card img {
   object-fit: cover;
   border-radius: 15px;
@@ -251,42 +253,25 @@ body {
 }
 
 .card ul {
-  color: red;
+  color: var(--color-error);
   margin: unset;
   font-weight: 200;
   padding-inline-start: 10px;
   padding-top: 10px;
 }
 
-.action .warning {
-  color: orange;
-  font-style: italic;
-}
-
-.action .no-action-item {
-  color: green;
-  font-style: italic;
-}
-
-.card a {
-  color: #fff;
-  background-color: #0265DC;
-  text-decoration: none;
-  padding: 8px;
-  border-radius: 16px;
-}
-
 .insights-panel {
   border-radius: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
 }
 
-.insights-panel .title{
+.insights-panel .title {
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
   padding: 6px;
 }
+
 .insights-container {
   display: flex;
   flex-wrap: wrap;
@@ -295,17 +280,17 @@ body {
 }
 
 .insight-item {
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
   padding: 10px;
   width: 200px;
   text-align: center;
-  background-color: #fdfdfd;
+  background-color: var(--color-white);
   cursor: pointer;
 }
 
 .insight-item:hover {
-  background-color: #ebebeb;
+  background-color: var(--color-hover);
   text-decoration: underline;
 }
 
@@ -327,7 +312,7 @@ body {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border-left-color: #09f;
+  border-left-color: var(--color-spinner);
   animation: spin 1s linear infinite;
 }
 
@@ -342,7 +327,7 @@ body {
 
 .loading-text {
   font-style: italic;
-  color: #fff;
+  color: var(--color-white);
   padding: 0 5px;
 }
 
@@ -352,12 +337,11 @@ body {
   padding: 10px 0;
 }
 
-
 .page-filter.all {
-  background-color: lightgray;
+  background-color: var(--color-lightgray);
   border-radius: 5px;
   padding: 4px;
-  color: #5a5d60;
+  color: var(--color-gray);
   font-size: 15px;
   width: max-content;
   margin-bottom: 10px;
@@ -367,11 +351,12 @@ body {
   display: flex;
   gap: 10px;
 }
-.page-filter .list-tags .tags{
-  background-color: lightgray;
+
+.page-filter .list-tags .tags {
+  background-color: var(--color-lightgray);
   border-radius: 5px;
   padding: 4px;
-  color: #5a5d60;
+  color: var(--color-gray);
   font-size: 15px;
   width: max-content;
 }
@@ -381,15 +366,15 @@ body {
   flex-direction: column;
   gap: 1rem;
   width: 80%;
-  background-color: #fdfdfd;
-  border: 1px solid #ddd;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   padding-bottom: 8px;
   margin-bottom: 10px;
 }
 
 .page-filter a {
-  color: #0054B6;
+  color: var(--color-blue);
 }
 
 .page-filter > div {
@@ -401,16 +386,16 @@ body {
   text-align: center;
   font-size: 20px;
   font-weight: 600;
-  background-color: #f8f8f8;
+  background-color: var(--color-background);
   padding: 8px;
   border-radius: 8px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .all-asset-usage-report {
   width: max-content;
-  color: #fff;
-  background-color: #0265dc;
+  color: var(--color-white);
+  background-color: var(--color-primary);
   border-radius: 16px;
   padding: 8px;
   text-decoration: none;

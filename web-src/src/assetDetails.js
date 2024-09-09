@@ -1,5 +1,6 @@
-var defaultThumbnail = require('../no-image.png');
+const defaultThumbnail = require('../no-image.png');
 (async () => {
+  // eslint-disable-next-line no-undef
   const queryParams = new URLSearchParams(window.location.search);
   const encodedJsonString = queryParams.get('data');
   const hlxUrl= queryParams.get('hlxUrl');
@@ -12,8 +13,10 @@ var defaultThumbnail = require('../no-image.png');
 
 function init(data) {
   // added a back button
+  // eslint-disable-next-line no-undef
   const backButton = document.querySelector('.back-button');
   backButton.addEventListener('click', () => {
+    // eslint-disable-next-line no-undef
     window.history.back();
   });
   const asset = data;
@@ -111,7 +114,6 @@ function init(data) {
       });
       pageDiv.appendChild(viewDetail);
       pagesSection.appendChild(pageDiv);
-      //fetch https://288650-edsassettracker-stage.adobeio-static.net/api/v1/web/EDS-Asset-Tracker1/fetchList?hlxUrl=${hlxUrl} and get the data for the page
       fetch(`https://288650-edsassettracker-stage.adobeio-static.net/api/v1/web/EDS-Asset-Tracker1/fetchList?hlxUrl=${hlxUrl}`)
           .then(response => response.json())
           .then(data => {
