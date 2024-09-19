@@ -22,6 +22,7 @@ junit.xml
 # IDE & Temp
 .cache
 .idea
+*.iml
 .nyc_output
 .vscode
 coverage

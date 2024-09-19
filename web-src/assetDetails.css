@@ -193,8 +193,9 @@ body {
   width: 100px;
   padding: 3px 0;
   margin-left: 10px;
+}
 
-  ::after {
+.tooltip::after {
     content: " ";
     position: absolute;
     top: 100%;
@@ -203,8 +204,8 @@ body {
     border-width: 5px;
     border-style: solid;
     border-color: var(--color-tooltip-background) transparent transparent transparent;
-  }
 }
+
 
 .assets-usage {
   color: var(--color-white);

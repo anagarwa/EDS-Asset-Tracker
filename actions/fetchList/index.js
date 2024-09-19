@@ -86,15 +86,18 @@ const { errorResponse, getBearerToken, stringParameters, checkMissingRequestInpu
 async function main (params) {
   // create a Logger
   const logger = Core.Logger('main', { level: params.LOG_LEVEL || 'info' })
-  const AUTH_HEADER = '';
-  const API_KEY = '';
+  const AUTH_HEADER = 'Bearer ' + getBearerToken(params);// process.env.AUTH_HEADER;
+  console.log(AUTH_HEADER);
+  const API_KEY = 'franklin';
 
 
   try {
 
+    console.log("fetching query index");
     const hlxQueryUrl = params.hlxUrl.endsWith('/') ? `${params.hlxUrl}query-index.json` : `${params.hlxUrl}/query-index.json`;
     const queryResponse = await fetch(hlxQueryUrl);
     const queryData = await queryResponse.json();
+    console.log(queryData);
 
     const pageDetails = {};
 
@@ -106,14 +109,19 @@ async function main (params) {
       };
     }
 
+    console.log("fetching asset index");
     const hlxUrl = params.hlxUrl.endsWith('/') ? `${params.hlxUrl}assets-index.json` : `${params.hlxUrl}/assets-index.json`;
+    console.log(hlxUrl);
     const indexResponse = await fetch(hlxUrl);
     const jsonData = await indexResponse.json();
+
+    console.log(jsonData);
 
     const dataMap = {};
 
     const fetchMetadata = async (assetID, authUrl) => {
       const metadataUrl = `${authUrl}/adobe/assets/${assetID}/metadata`;
+      console.log("metdataurl is " + metadataUrl);
       const response = await fetch(metadataUrl, {
         headers: {
           'authorization': AUTH_HEADER,
@@ -160,7 +168,9 @@ async function main (params) {
                 dataMap[assetID].pagePath.push(item.path);
               } else {
                 // Fetch metadata if assetID is not in the map
+                console.log("fetching for assetID " + assetID);
                 const metadata = await fetchMetadata(assetID, authUrl);
+                console.log(metadata);
                 const tags = metadata?.assetMetadata?.["xcm:keywords"]
                     ? metadata.assetMetadata["xcm:keywords"].map(keyword => keyword.id)
                     : [];
@@ -248,9 +258,10 @@ async function main (params) {
     return response;
   } catch (error) {
     // log any server errors
+    console.log("I am here");
     logger.error(error)
     // return with 500
-    return errorResponse(500, 'server error', logger)
+    return errorResponse(500, 'Server error', logger, AUTH_HEADER);
   }
 }
 
